@@ -1,7 +1,10 @@
-# React Compose
+# Police Disciplinary Records
 
-A starter project which contains a fresh `create-react-app` project, ready with
-run with Docker Compose and a Makefile.
+An app to make it easier to request & access public disciplinary records.
+
+## Research around FOIL requests
+
+https://docs.google.com/document/d/1TshUYKxeS_TzChjOFm8ZvY-kHKq_kg94msalWKY3Al8/edit?usp=sharing
 
 ## Requirements
 

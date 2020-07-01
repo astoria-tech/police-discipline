@@ -15,7 +15,7 @@ function AutoCompleteOfficer(props) {
       return;
     }
     // Go get data from the backend, and wrap it in display markup.
-    const response = await fetch(`http://localhost:3001/api/v1/police/${event.target.value}`);
+    const response = await fetch(`/api/v1/police/${event.target.value}`);
     const data = await response.json();
     const markup = DOMPurify.sanitize(data.reduce((accumulator, currentValue) => accumulator + `<li tabindex="0">${currentValue}</li>`, ''));
     setSuggestions(markup);

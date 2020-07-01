@@ -1,0 +1,30 @@
+.autocomplete-officer {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.autocomplete-officer__results {
+  list-style-type: none;
+  margin: 0;
+  padding-left: 1.5ch;
+  padding-bottom: 1.5ch;
+  width: 40ch;
+  border: 1px solid #d0d0d0;
+  border-top: none;
+}
+
+.autocomplete-officer__results:empty {
+  display: none;
+}
+
+.autocomplete-officer__results li {
+  margin-top: 1ch;
+}
+
+.autocomplete-officer__results li:focus,
+.autocomplete-officer__results li:hover {
+  cursor: pointer;
+  background-color: #bdefff;
+}

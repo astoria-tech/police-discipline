@@ -1,11 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import 'normalize.css';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
+class Doc extends React.Component {
+  componentDidMount() {
+    document.title = 'Police Discipline';
+  }
+  render() {
+    return('');
+  }
+}
+
 ReactDOM.render(
   <React.StrictMode>
+    <Doc />
     <App />
   </React.StrictMode>,
   document.getElementById('root')

@@ -14,11 +14,14 @@ function AutoCompleteOfficer(props) {
       setSuggestions([]);
       return;
     }
-    // Go get data from the backend, and wrap it in display markup.
-    const response = await fetch(`/api/v1/police/${event.target.value}`);
-    const data = await response.json();
-    const markup = DOMPurify.sanitize(data.reduce((accumulator, currentValue) => accumulator + `<li tabindex="0">${currentValue}</li>`, ''));
-    setSuggestions(markup);
+
+    if (event.target.value.length > 1) {
+      // Go get data from the backend, and wrap it in display markup.
+      const response = await fetch(`/api/v1/police/${event.target.value}`);
+      const data = await response.json();
+      const markup = DOMPurify.sanitize(data.reduce((accumulator, currentValue) => accumulator + `<li tabindex="0">${currentValue.item.name}</li>`, ''));
+      setSuggestions(markup);
+    }
   }
 
   function handleSelect(event) {

@@ -1,23 +1,21 @@
 const express = require('express');
-const fetch = require('node-fetch');
-const fs = require('fs/promises');
+const db = require('./db');
+const fuse = require('./middleware/fuse');
 
 const host = '0.0.0.0';
 const port = 3001;
 
 const app = express();
+app.use(fuse(db));
 
 app.get('/api/v1/police/:name', async (req, res) => {
-  try {
-    const data = await (fs.readFile('./data/police-names.json', 'utf8'));
-    const results = JSON.parse(data)
-      .filter((name, index) => name.includes(req.params.name))
-      .slice(0, 9);
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.json(results);
-  } catch (error) {
-    res.json(error);
-  }
+  const results = req.fuse.search(req.params.name).filter(el => {
+    return el.score < 0.5; // Where lower scores are closer matches
+  })
+  .slice(0, 20);
+  
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.json(results);
 });
 
 app

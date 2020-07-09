@@ -13,7 +13,7 @@ const finalData = parsedJsonData.map(name => {
   // searchString: a sanitized string to be used for fuzzy search
   return {
     name,
-    searchString: name.replace(/'|,/gi, "")
+    searchString: name.replace(/[-,']/gi, "")
   }
 });
 
